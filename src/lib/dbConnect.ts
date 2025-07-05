@@ -1,14 +1,15 @@
 import mongoose from 'mongoose'
 declare global {
     var mongoose: any
+    
   }
   
-const MONGODB_URI:any = process.env.MONGODB_URl
+const MONGODB_URI = process.env.MONGODB_URl as string
 if (!MONGODB_URI) {
   throw new Error('❌ MongoDB URI missing')
 }
 
-let cached = global.mongoose || { conn: null, promise: null }
+const cached = global.mongoose || { conn: null, promise: null }
 
 async function dbConnect() {
   if (cached.conn) return cached.conn
