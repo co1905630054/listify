@@ -25,7 +25,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>({
 })
 
 // 👇 Add multer middleware
-handler.use(upload.single('image'))
+handler.use(upload.single('file'))
 
 // 👇 GET Products
 handler.get(async (req, res) => {
@@ -53,9 +53,14 @@ handler.post(async (req: any, res) => {
     if (exists) {
       return res.status(400).json({ message: 'Product with this title already exists' })
     }
+    const file = req.file;
 
+    if (!file) return res.status(400).json({ message: 'Image required' });
+    
+    const base64 = file.buffer.toString('base64');
+    const dataUri = `data:${file.mimetype};base64,${base64}`;
     // Upload image to Cloudinary
-    const uploadResult = await cloudinary.uploader.upload(imagePath, {
+    const uploadResult = await cloudinary.uploader.upload(dataUri, {
       folder: process.env.CLOUDINARY_UPLOAD_FOLDER
     })
 
