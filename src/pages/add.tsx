@@ -47,7 +47,7 @@ export default function AddProductPage() {
     formDataToSend.append('title', formData.title)
     formDataToSend.append('description', formData.description)
     formDataToSend.append('affiliateUrl', formData.affiliateUrl)
-    if (formData.image) formDataToSend.append('image', formData.image)
+    if (formData.image) formDataToSend.append('file', formData.image)
 
     setUploading(true)
     
