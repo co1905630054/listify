@@ -5,7 +5,6 @@ import upload from '@/lib/multer'
 import dbConnect from '@/lib/dbConnect'
 import Product from '@/models/Product'
 import cloudinary from '@/lib/cloudinary'
-import fs from 'fs'
 
 
 // 👇 Slugify utility
