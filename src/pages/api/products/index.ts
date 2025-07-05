@@ -40,9 +40,8 @@ handler.post(async (req: any, res) => {
 
   try {
     const { title, description, affiliateUrl } = req.body
-    const imagePath = req.file?.path
 
-    if (!title || !description || !affiliateUrl || !imagePath) {
+    if (!title || !description || !affiliateUrl ) {
       return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -57,15 +56,14 @@ handler.post(async (req: any, res) => {
 
     if (!file) return res.status(400).json({ message: 'Image required' });
     
-    const base64 = file.buffer.toString('base64');
-    const dataUri = `data:${file.mimetype};base64,${base64}`;
-    // Upload image to Cloudinary
-    const uploadResult = await cloudinary.uploader.upload(dataUri, {
-      folder: process.env.CLOUDINARY_UPLOAD_FOLDER
-    })
+    const buffer = req.file.buffer;
+const base64 = buffer.toString('base64');
+const dataUri = `data:${req.file.mimetype};base64,${base64}`;
 
-    // Remove local file
-    fs.unlinkSync(imagePath)
+const uploadResult = await cloudinary.uploader.upload(dataUri, {
+  folder: process.env.CLOUDINARY_UPLOAD_FOLDER,
+});
+
 
     // Save to DB
     const product = await Product.create({
