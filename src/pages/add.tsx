@@ -80,62 +80,74 @@ export default function AddProductPage() {
       <Head>
         <title>Add Product</title>
       </Head>
-
-      <main className="max-w-xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6 mt-10">Add a New Product</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            name="title"
-            type="text"
-            placeholder="Title"
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-          <input
-            name="affiliateUrl"
-            type="url"
-            placeholder="Affiliate URL"
-            value={formData.affiliateUrl}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-          <div className="space-y-2">
+  
+      <main className="flex justify-center items-start min-h-screen pt-20 px-4 relative z-10">
+        <div className="w-full max-w-md bg-white/90 backdrop-blur-md rounded-xl shadow-xl border border-gray-200 p-6 space-y-6 scale-95 hover:scale-100 transition-transform duration-300">
+          <h1 className="text-2xl font-bold text-gray-800 text-center mb-4">
+            Add a New Product
+          </h1>
+  
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
-              name="image"
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="w-full p-2 border rounded"
+              name="title"
+              type="text"
+              placeholder="Title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full border border-gray-300 p-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               required
             />
-            {imagePreview && (
-              <img
-                src={imagePreview}
-                alt="Preview"
-                className="w-20 h-20 object-cover rounded"
+  
+            <textarea
+              name="description"
+              placeholder="Description"
+              value={formData.description}
+              onChange={handleChange}
+              className="w-full border border-gray-300 p-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              rows={4}
+              required
+            />
+  
+            <input
+              name="affiliateUrl"
+              type="url"
+              placeholder="Affiliate URL"
+              value={formData.affiliateUrl}
+              onChange={handleChange}
+              className="w-full border border-gray-300 p-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              required
+            />
+  
+            <div className="space-y-2">
+              <input
+                name="image"
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="w-full border border-gray-300 p-2.5 rounded-md text-black"
+                required
               />
-            )}
-          </div>
-          <button
-            type="submit"
-            disabled={uploading}
-            className="bg-blue-600 text-white px-5 py-2 rounded disabled:opacity-50"
-          >
-            {uploading ? 'Uploading...' : 'Submit'}
-          </button>
-        </form>
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="w-20 h-20 object-cover rounded shadow"
+                />
+              )}
+            </div>
+  
+            <button
+              type="submit"
+              disabled={uploading}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-black py-2.5 rounded-md font-semibold transition disabled:opacity-60"
+            >
+              {uploading ? 'Uploading...' : 'Submit'}
+            </button>
+          </form>
+        </div>
       </main>
     </>
   )
+  
+  
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { FaLock } from 'react-icons/fa'
 type Product = {
   _id: string
   title: string
@@ -57,26 +58,35 @@ export default function AdminPage() {
   
 
   if (!loggedIn) {
-    return (
-      <div className="max-w-sm mx-auto py-20 px-4">
-        <h1 className="text-2xl font-bold mb-4">Admin Login</h1>
-        <input
-          type="password"
-          placeholder="Enter Admin Password"
-          className="w-full border p-2 rounded mb-4"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full"
-          onClick={handleLogin}
-        >
-          Login
-        </button>
-      </div>
-    )
-  }
-
+      return (
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+          <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-6 sm:p-8 space-y-6 border border-gray-200">
+            <div className="flex flex-col items-center">
+              <FaLock className="text-4xl text-blue-600 mb-2" />
+              <h1 className="text-2xl font-bold text-gray-800">Admin Login</h1>
+              <p className="text-sm text-gray-500 text-center mt-1">
+                Enter the admin password to continue
+              </p>
+            </div>
+    
+            <input
+              type="password"
+              placeholder="Admin Password"
+              className="w-full border border-gray-300 p-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-black"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+    
+            <button
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-md font-medium transition"
+              onClick={handleLogin}
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      )
+    }
   if (loading) return <p className="text-center mt-10">Loading Form...</p>
 
   return (
