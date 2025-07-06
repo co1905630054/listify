@@ -22,7 +22,7 @@ export default function Footer() {
 
         {/* Right Side: Copyright */}
         <div className="text-center md:text-right">
-          &copy; {new Date().getFullYear()} Listify. All rights reserved.
+          &copy; {new Date().getFullYear()} Ingeneous Digital World. All rights reserved.
         </div>
       </div>
     </footer>

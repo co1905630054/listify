@@ -36,3 +36,23 @@ body {
   @apply bg-white text-black dark:bg-gray-900 dark:text-white;
 }
 
+@layer utilities {
+  .bg-gradient-animated {
+    background: linear-gradient(270deg, #3b82f6, #10b981, #8b5cf6, #f59e0b);
+    background-size: 800% 800%;
+    animation: gradientMotion 15s ease infinite;
+  }
+
+  @keyframes gradientMotion {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+

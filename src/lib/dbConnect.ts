@@ -18,8 +18,6 @@ async function dbConnect() {
     cached.promise = mongoose.connect(MONGODB_URI, {
       dbName: 'warriorplus-affiliate',
     }).then((mongoose) => mongoose)
-    
-    
   }
 
   cached.conn = await cached.promise

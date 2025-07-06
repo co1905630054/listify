@@ -25,7 +25,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center space-x-2">
           <Image src="/images/2.png" alt="Logo" width={36} height={36} className="rounded" />
           <span className="text-xl sm:text-2xl font-extrabold text-blue-600 tracking-wide">
-            Listify<span className="text-gray-900"> Digital World</span>
+          Ingeneous<span className="text-gray-900"> Digital World</span>
           </span>
         </Link>
 
